@@ -2,10 +2,10 @@ package org.fasttrackit.projectquotes.controller;
 
 import lombok.AllArgsConstructor;
 import org.fasttrackit.projectquotes.model.Book;
+import org.fasttrackit.projectquotes.model.Quote;
+import org.fasttrackit.projectquotes.service.BookRepository;
 import org.fasttrackit.projectquotes.service.BookService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,10 +15,26 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
+    private final BookRepository bookRepository;
 
     @GetMapping
     public List<Book> getAllBooks(){
         return bookService.getAllBooks();
+    }
+
+    @GetMapping("/{id}") // GET http://host:port/books/2
+    public Book getById(@PathVariable long id){
+        return bookService.getById(id);
+    }
+
+    @PostMapping
+    public Book addNewBook (@RequestBody Book book) {
+        return bookService.add(book);
+    }
+
+    @PostMapping("/{id}/quotes")
+    Book addQuoteToBook (@PathVariable Long id, @RequestBody Quote quote){
+        return bookService.addQuoteToBook(id,quote);
     }
 
 }

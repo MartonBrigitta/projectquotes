@@ -1,11 +1,10 @@
 package org.fasttrackit.projectquotes.controller;
 
 import lombok.AllArgsConstructor;
+import org.fasttrackit.projectquotes.model.Book;
 import org.fasttrackit.projectquotes.model.Subject;
 import org.fasttrackit.projectquotes.service.SubjectService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,11 @@ public class SubjectController {
     @GetMapping
     public List<Subject> getAllSubjects(){
         return subjectService.getAllSubjects();
+    }
+
+    @PostMapping
+    public Subject addNewSubject (@RequestBody Subject subject) {
+        return subjectService.add(subject);
     }
 
 }
