@@ -16,9 +16,10 @@ import java.util.List;
 public class BookService {
     private final BookRepository bookRepository;
 
-    public List <Book> getAllBooks() {
-        return bookRepository.findAll();
+    public List <Book> getAllBooks(String title, String author) {
+        return bookRepository.filterBooks(title,author);
     }
+
 
     public Book getById(long id){
         return bookRepository.findById(id)

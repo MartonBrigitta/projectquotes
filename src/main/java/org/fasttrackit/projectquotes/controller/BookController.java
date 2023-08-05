@@ -18,8 +18,9 @@ public class BookController {
     private final BookRepository bookRepository;
 
     @GetMapping
-    public List<Book> getAllBooks(){
-        return bookService.getAllBooks();
+    public List<Book> getAll(@RequestParam(required = false)String title,
+                             @RequestParam(required = false)String author) {
+        return bookService.getAllBooks(title, author);
     }
 
     @GetMapping("/{id}") // GET http://host:port/books/2

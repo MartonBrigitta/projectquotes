@@ -16,8 +16,8 @@ public class SubjectController {
     private final SubjectService subjectService;
 
     @GetMapping
-    public List<Subject> getAllSubjects(){
-        return subjectService.getAllSubjects();
+    public List<Subject> getAll(@RequestParam(required = false)String name){
+        return subjectService.getAllSubjects(name);
     }
 
     @PostMapping

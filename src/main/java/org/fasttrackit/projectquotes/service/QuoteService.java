@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class QuoteService {
     private final QuoteRepository quoteRepository;
+    private final BookRepository bookRepository;
     private final QuoteReader quoteReader;
 
     @PostConstruct
@@ -20,9 +21,9 @@ public class QuoteService {
     quoteReader.readAndSaveQuotes();
     }
 
-    public List <Quote> getAllQuotes() {
+    public List <Quote> getAllQuotes(String body, Boolean favorite) {
 
-        return quoteRepository.findAll();
+        return quoteRepository.filterQuotes(body, favorite);
     }
     SubjectRepository subjectRepository;
     public Subject getBySubject (String subjectName){

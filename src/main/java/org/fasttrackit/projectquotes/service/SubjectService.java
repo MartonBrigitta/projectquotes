@@ -11,8 +11,8 @@ import java.util.List;
 public class SubjectService {
     private final SubjectRepository subjectRepository;
 
-    public List<Subject> getAllSubjects() {
-        return subjectRepository.findAll();
+    public List<Subject> getAllSubjects(String name) {
+        return subjectRepository.filterSubjects(name);
     }
 
     public Subject add(Subject subject){

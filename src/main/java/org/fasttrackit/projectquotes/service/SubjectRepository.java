@@ -10,8 +10,11 @@ import java.util.List;
 
 @Repository
 public interface SubjectRepository extends JpaRepository <Subject, Long> {
-    
+
     @Query("select s from Subject s where s.name=:subject")
     Subject findByName(@Param("subject") String name);
+
+    @Query("select s from Subject s where(:name=null or lower(s.name) like lower (concat('%',:name,'%')))")
+    List<Subject> filterSubjects(@Param("name") String name);
 
 }

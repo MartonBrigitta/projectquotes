@@ -1,6 +1,7 @@
 package org.fasttrackit.projectquotes.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Value;
 import org.fasttrackit.projectquotes.service.BookRepository;
 import org.fasttrackit.projectquotes.service.QuoteRepository;
 import org.fasttrackit.projectquotes.service.SubjectRepository;
@@ -19,7 +20,6 @@ public class QuoteReader {
 
     private final SubjectRepository subjectRepository;
     private final BookRepository bookRepository;
-
     private final QuoteRepository quoteRepository;
 
     @Transactional
@@ -47,7 +47,7 @@ public class QuoteReader {
 
         return quoteRepository.save(Quote.builder()
                 .body(tokens[2])
-                .favorite(Boolean.valueOf(tokens[3]))
+                .favourite(Boolean.valueOf(tokens[3]))
                 .subject(subject)
                 .book(book)
                 .build());
