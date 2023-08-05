@@ -1,5 +1,6 @@
 package org.fasttrackit.projectquotes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.websocket.OnClose;
 import lombok.AllArgsConstructor;
@@ -18,11 +19,12 @@ public class Book {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
+    @Column(unique = true)
     private String title;
     @Column
     private String author;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Quote> quotes;
 

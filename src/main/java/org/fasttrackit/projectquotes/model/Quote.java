@@ -18,6 +18,7 @@ public class Quote {
     @Column
     private Boolean favorite;
 
+    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Subject subject;
 

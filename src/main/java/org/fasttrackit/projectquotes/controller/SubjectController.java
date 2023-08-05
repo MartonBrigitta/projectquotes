@@ -18,7 +18,7 @@ public class SubjectController {
 
     @GetMapping
     public List<Subject> getAllSubjects(){
-        return subjectService.getAllSubjectes();
+        return subjectService.getAllSubjects();
     }
 
 }
