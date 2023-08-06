@@ -11,6 +11,11 @@ import java.util.List;
 @Repository
 public interface QuoteRepository extends JpaRepository <Quote, Long> {
 
+//    @Query("SELECT DISTINCT q FROM Quote q " +
+//            "LEFT JOIN FETCH q.book " +
+//            "LEFT JOIN FETCH q.subject")
+//    List<Quote> findAllWithBookAndSubject();
+
     @Query("Select q from Quote q where (:body=null or lower(q.body) like lower(concat('%',:body, '%')))" +
     "and (:favourite IS NULL OR q.favourite = :favourite)")
     List<Quote> filterQuotes(@Param("body")String body,

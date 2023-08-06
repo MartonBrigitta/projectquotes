@@ -3,6 +3,7 @@ package org.fasttrackit.projectquotes.controller;
 import lombok.AllArgsConstructor;
 import org.fasttrackit.projectquotes.model.Book;
 import org.fasttrackit.projectquotes.model.Quote;
+import org.fasttrackit.projectquotes.model.Subject;
 import org.fasttrackit.projectquotes.service.BookRepository;
 import org.fasttrackit.projectquotes.service.BookService;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,18 @@ public class BookController {
         return bookService.add(book);
     }
 
+    @DeleteMapping("/{id}")
+    public Book deleteBy(@PathVariable long id) {
+        return bookService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public Book updateBook(@RequestBody Book book, @PathVariable long id) {
+        return bookService.update(book, id);
+    }
+
     @PostMapping("/{id}/quotes")
-    Book addQuoteToBook (@PathVariable Long id, @RequestBody Quote quote){
+    Book addQuoteToBook(@PathVariable Long id, @RequestBody Quote quote){
         return bookService.addQuoteToBook(id,quote);
     }
 

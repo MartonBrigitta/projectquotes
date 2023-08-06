@@ -24,12 +24,15 @@ public class Book {
     @Column
     private String author;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Quote> quotes;
 
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
+    }
+
+    public Book (long id){
+        this.id = id;
     }
 }

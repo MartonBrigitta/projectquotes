@@ -25,8 +25,23 @@ public class QuoteController {
         return quoteService.getAllQuotes(body, favourite);
     }
 
+    @GetMapping("/{id}")
+    public Quote getById(@PathVariable long id){
+        return quoteService.getById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public Quote deleteById(@PathVariable long id) {
+        return quoteService.delete(id);
+    }
+
     @PostMapping
     public Quote addNewQuote (@RequestBody Quote quote) {
         return quoteService.add(quote);
+    }
+
+    @PutMapping("/{id}")
+    public  Quote updateQuote(@RequestBody Quote quote, @PathVariable long id){
+        return quoteService.update(quote,id);
     }
 }

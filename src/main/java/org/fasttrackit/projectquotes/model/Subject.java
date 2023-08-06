@@ -21,7 +21,6 @@ public class Subject {
     @Column(unique = true)
     private String name;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     private List<Quote> quotes;
 

@@ -25,4 +25,19 @@ public class SubjectController {
         return subjectService.add(subject);
     }
 
+    @GetMapping("/{id}")
+    public Subject getById(@PathVariable long id) {
+        return subjectService.getById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public Subject deleteById(@PathVariable long id){
+        return subjectService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public Subject updateSubject(@RequestBody Subject subject, @PathVariable long id){
+        return subjectService.update(subject,id);
+    }
+
 }
